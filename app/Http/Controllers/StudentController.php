@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Model\Student;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
-    public function index(){
-        return view('admin.student',[
-            'title' => 'student'
+    public function index()
+    {
+        $students = Student::all();
+
+        return view('admin.student', [
+            'students' => $students,
         ]);
     }
 }

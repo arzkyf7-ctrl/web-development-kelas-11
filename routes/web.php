@@ -21,24 +21,17 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::prefix('admin')
-    ->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])
-            ->name('admin.dashboard');
-    });
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+});
 
 Route::get('/admin/about', function () {
     return view('admin.about');
 })->name('admin.about');
 
-Route::prefix('admin')
-    ->group(function () {
-        // STUDENT
-        Route::get('/student', [StudentController::class, 'index'])
-            ->name('admin.student');
-        // CLASSROOM
-        Route::get('/classroom', [ClassroomController::class, 'index'])
-            ->name('/admin.classroom');
-    });
-Route::get('/subjects', [SubjectsController::class, 'index'])->name('subjects.index');
-Route::get('/subjects', [TeachersController::class, 'index'])->name('subjects.index');
+Route::prefix('admin')->group(function () {
+    Route::get('/student', [StudentController::class, 'index'])->name('admin.student');
+    Route::get('/classroom', [ClassroomController::class, 'index'])->name('/admin.classroom');
+    Route::get('/subjects', [SubjectsController::class, 'index'])->name('/admin.subjects');
+    Route::get('/teachers', [TeachersController::class, 'index'])->name('admin.teachers');
+});

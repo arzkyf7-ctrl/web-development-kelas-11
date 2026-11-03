@@ -6,91 +6,58 @@
                 <h1 class="text-2xl font-bold text-gray-900">
                     Classroom
                 </h1>
-
                 <p class="mt-1 text-sm text-gray-500">
                     Manage Classroom Data
                 </p>
             </div>
-
             <div>
                 <a href=""
                     class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">
                     + Add Classroom </a>
             </div>
-
         </div>
-
     </div>
-
 
     {{-- Main Card --}}
     <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
 
         {{-- Card Header --}}
         <div class="p-4 border-b border-gray-200 sm:p-6">
-
             <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
                 {{-- Search --}}
                 <form action="" method="GET" class="w-full lg:max-w-md">
-
                     <label for="search" class="sr-only">
                         Search
                     </label>
-
                     <div class="relative">
-
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-
                             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
                             </svg>
-
                         </div>
-
-                        <input type="search" name="search" id="search" value=""
-                            placeholder="Cari nama atau NIS..."
+                        <input type="search" name="search" id="search" value="" placeholder="Search class..."
                             class="block w-full p-2.5 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-
                     </div>
-
                 </form>
-
 
                 {{-- Filter --}}
                 <div class="flex items-center gap-2">
                     <select name="classroom"
                         class="px-3 py-2.5 text-sm text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-
                         <option value="">
-                            --Semua Kelas--
+                            --All Class--
                         </option>
-
-
-
                     </select>
-
                 </div>
-
             </div>
-
         </div>
-
-
         {{-- Table --}}
         <div class="relative overflow-x-auto">
-
             <table class="w-full text-sm text-left text-gray-500">
-
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-
                     <tr>
-
-                        <th class="px-6 py-3">
-                            No
-                        </th>
-
                         <th class="px-6 py-3">
                             Name
                         </th>
@@ -98,42 +65,17 @@
                         <th class="px-6 py-3">
                             Major
                         </th>
-                        <th class="px-6 py-3">
-                            Students List
-                        </th>
-
                     </tr>
-
                 </thead>
-
-
                 <tbody>
-
-                    @foreach ($classrooms as $classroom)
+                    @foreach ($classrooms as $index => $classroom)
                         <tr class="bg-white border-b">
-                            <td class="px-6 py-4">
-                                {{ $loop->iteration }}
-                            </td>
-                            <td class="px-6 py-4 font-medium text-gray-900">
-                                {{ $classroom->name }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $classroom->major }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @foreach ($classroom->students as $student)
-                                    {{ $student->name }} <br>
-                                @endforeach
-                            </td>
+                            <td class="px-6 py-4">{{ $classroom->name }}</td>
+                            <td class="px-6 py-4">{{ $classroom->major }}</td>
                         </tr>
                     @endforeach
-
                 </tbody>
-
             </table>
-
         </div>
-
     </div>
-
 </x-admin.layout>
