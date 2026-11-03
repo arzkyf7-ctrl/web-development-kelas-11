@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectsController;
+use App\Http\Controllers\TeachersController;
 use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'welcome')->name('home');
@@ -9,7 +12,6 @@ Route::inertia('/', 'welcome')->name('home');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
 });
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,4 +36,9 @@ Route::prefix('admin')
         // STUDENT
         Route::get('/student', [StudentController::class, 'index'])
             ->name('admin.student');
-        });
+        // CLASSROOM
+        Route::get('/classroom', [ClassroomController::class, 'index'])
+            ->name('/admin.classroom');
+    });
+Route::get('/subjects', [SubjectsController::class, 'index'])->name('subjects.index');
+Route::get('/subjects', [TeachersController::class, 'index'])->name('subjects.index');

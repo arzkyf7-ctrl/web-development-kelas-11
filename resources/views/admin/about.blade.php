@@ -6,8 +6,8 @@
             About
         </h1>
 
-        <p class="text-gray-500">
-            <a href="">Link Github</a>
+        <p>
+            <a href="https://github.com/arzkyf7-ctrl/web-development-kelas-11">Link Github</a>
         </p>
 
 </x-admin.layout>
