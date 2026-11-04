@@ -59,6 +59,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($teachers as $index => $teacher)
+                        <td>{{ $teacher->name }}</td>
+                        <td>{{ $teacher->niy }}</td>
+                        <td>{{ $teacher->subject_id }}</td>
+                        <td>{{ $teacher->start_date }}</td>
+                    @endforeach
                 </tbody>
             </table>
         </div>

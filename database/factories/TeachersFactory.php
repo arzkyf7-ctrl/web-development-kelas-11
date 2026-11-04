@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Subjects;
 use App\Models\Teachers;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,9 +19,9 @@ class TeachersFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=>$this->faker->name(),
-            'niy'=>$this->faker->randomNumber(9, true),
-            'subjects' => $this->faker->word(),
+            'name' => $this->faker->name(),
+            'niy' => $this->faker->randomNumber(9, true),
+            'subject_id' => Subjects::factory(),
             'start-date' => $this->faker->date(),
         ];
     }

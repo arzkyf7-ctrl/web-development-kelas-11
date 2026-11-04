@@ -55,7 +55,8 @@
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
-                        <th class="px-6 py-3">Name</th>
+                        <td class="px-6 py-3">Name</td>
+
                     </tr>
                 </thead>
                 <tbody>
