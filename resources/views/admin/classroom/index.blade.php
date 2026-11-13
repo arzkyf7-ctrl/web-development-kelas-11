@@ -4,17 +4,20 @@
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
                 <h1 class="text-2xl font-bold text-gray-900">
-                    Students
+                    Classroom
                 </h1>
                 <p class="mt-1 text-sm text-gray-500">
-                    Manage Student Data
+                    Manage Classroom Data
                 </p>
             </div>
             <div>
-                <a href=""
+                <button type="button" data-modal-target="create-classroom-modal"
+                    data-modal-toggle="create-classroom-modal"
                     class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">
-                    + Add Student </a>
+                    + Add Classroom
+                </button>
             </div>
+            @include('admin.classroom.create')
         </div>
     </div>
 
@@ -37,7 +40,7 @@
                                     d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
                             </svg>
                         </div>
-                        <input type="search" name="search" id="search" value="" placeholder="Search Student Name"
+                        <input type="search" name="search" id="search" value="" placeholder="Search class..."
                             class="block w-full p-2.5 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
                     </div>
                 </form>
@@ -58,19 +61,20 @@
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
-                        <th class="px-6 py-3">Name</th>
-                        <th class="px-6 py-3">NIS</th>
-                        <th class="px-6 py-3">Classroom ID</th>
-                        <th class="px-6 py-3">Status</th>
+                        <th class="px-6 py-3">
+                            Name
+                        </th>
+
+                        <th class="px-6 py-3">
+                            Major
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($students as $index => $student)
+                    @foreach ($classrooms as $index => $classroom)
                         <tr class="bg-white border-b">
-                            <td class="px-6 py-4">{{ $student->name }}</td>
-                            <td class="px-6 py-4">{{ $student->nis }}</td>
-                            <td class="px-6 py-4">{{ $student->classroom_id }}</td>
-                            <td class="px-6 py-4">{{ $student->status }}</td>
+                            <td class="px-6 py-4">{{ $classroom->name }}</td>
+                            <td class="px-6 py-4">{{ $classroom->major }}</td>
                         </tr>
                     @endforeach
                 </tbody>

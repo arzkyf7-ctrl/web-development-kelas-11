@@ -11,7 +11,7 @@ class SubjectsController extends Controller
     {
         $subjects = Subjects::all();
 
-        return view('admin.subjects', [
+        return view('admin.subject.index', [
             'subjects' => $subjects,
         ]);
     }

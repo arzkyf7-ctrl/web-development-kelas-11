@@ -30,8 +30,29 @@ Route::get('/admin/about', function () {
 })->name('admin.about');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/student', [StudentController::class, 'index'])->name('admin.student');
-    Route::get('/classroom', [ClassroomController::class, 'index'])->name('/admin.classroom');
-    Route::get('/subjects', [SubjectsController::class, 'index'])->name('/admin.subjects');
-    Route::get('/teachers', [TeachersController::class, 'index'])->name('admin.teachers');
+    // student
+    Route::get('/students', [StudentController::class, 'index'])
+        ->name('admin.student.index');
+
+    Route::post('/students', [StudentController::class, 'store'])
+        ->name('admin.student.store');
+
+    Route::put('/students/{id}', [StudentController::class, 'update'])
+        ->name('admin.student.update');
+
+    Route::delete('/students/{id}', [StudentController::class, 'destroy'])
+        ->name('admin.student.destroy');
+
+    // classroom
+    Route::get('/classroom', [ClassroomController::class, 'index'])
+        ->name('admin.classroom.index');
+    Route::post('/classroom', [ClassroomController::class, 'store'])
+        ->name('admin.classroom.store');
+    Route::put('/classroom/{id}', [ClassroomController::class, 'update'])
+        ->name('admin.classroom.update');
+    Route::delete('/classroom/{id}', [ClassroomController::class, 'destroy'])
+        ->name('admin.classroom.destroy');
+
+    Route::get('/subjects', [SubjectsController::class, 'index'])->name('admin.subjects.index');
+    Route::get('/teachers', [TeachersController::class, 'index'])->name('admin.teacher.index');
 });

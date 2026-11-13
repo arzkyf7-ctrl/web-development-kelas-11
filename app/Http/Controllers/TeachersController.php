@@ -11,7 +11,7 @@ class TeachersController extends Controller
     {
         $teachers = Teachers::all();
 
-        return view('admin.teachers', [
+        return view('admin.teacher.index', [
             'teachers' => $teachers,
         ]);
     }
