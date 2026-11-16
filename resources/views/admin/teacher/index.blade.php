@@ -8,10 +8,12 @@
                 </h1>
             </div>
             <div>
-                <a href=""
+                <button type="button" data-modal-target="create-teacher-modal" data-modal-toggle="create-teacher-modal"
                     class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">
-                    + Add Subject </a>
+                    + Add Teacher
+                </button>
             </div>
+            @include('admin.teacher.create')
         </div>
     </div>
 

@@ -52,6 +52,11 @@
                         <option value="">
                             --All Class--
                         </option>
+                        @foreach ($classrooms as $classroom)
+                            <option value="{{ $classroom->id }}" {{ old('classroom_id') == $classroom->id ? 'selected' : ''}}>
+                                {{ $classroom->name }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
