@@ -22,7 +22,7 @@ class TeachersFactory extends Factory
             'name' => $this->faker->name(),
             'niy' => $this->faker->randomNumber(9, true),
             'subject_id' => Subjects::factory(),
-            'start-date' => $this->faker->date(),
+            'start_date' => $this->faker->date(),
         ];
     }
 }

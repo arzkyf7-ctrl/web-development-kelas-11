@@ -58,14 +58,19 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th class="px-6 py-3">Name</th>
+                        <th class="px-6 py-3">NIY</th>
+                        <th class="px-6 py-3">Subject ID</th>
+                        <th class="px-6 py-3">Start Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($teachers as $index => $teacher)
-                        <td>{{ $teacher->name }}</td>
-                        <td>{{ $teacher->niy }}</td>
-                        <td>{{ $teacher->subject_id }}</td>
-                        <td>{{ $teacher->start_date }}</td>
+                        <tr class="bg-white border-b">
+                            <td class="px-6 py-4">{{ $teacher->name }}</td>
+                            <td class="px-6 py-4">{{ $teacher->niy }}</td>
+                            <td class="px-6 py-4">{{ $teacher->subject_id }}</td>
+                            <td class="px-6 py-4">{{ $teacher->start_date }}</td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

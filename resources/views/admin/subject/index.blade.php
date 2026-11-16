@@ -58,12 +58,13 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <td class="px-6 py-3">Name</td>
-
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($subjects as $index => $subject)
-                        <td class="px-6 py-3">{{ $subject->name }}</td>
+                        <tr class="bg-white border-b">
+                            <td class="px-6 py-4">{{ $subject->name }}</td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

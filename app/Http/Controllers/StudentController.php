@@ -9,6 +9,7 @@ use Illuminate\Http\Client\Request;
 class StudentController extends Controller
 {
     public function index()
+
     {
         $students = Student::all();
         $classrooms = ClassRoom::all();
