@@ -49,7 +49,7 @@
                     <select name="classroom"
                         class="px-3 py-2.5 text-sm text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                         <option value="">
-                            --All Class--
+                            All Class
                         </option>
                         @foreach ($classrooms as $classroom)
                             <option value="{{ $classroom->id }}" {{ old('classroom_id') == $classroom->id ? 'selected' : ''}}>

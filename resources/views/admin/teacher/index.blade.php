@@ -46,34 +46,40 @@
                     <select name="classroom"
                         class="px-3 py-2.5 text-sm text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
                         <option value="">
-                            --All Class--
+                            All Class
                         </option>
+                        @foreach ($classrooms as $classroom)
+                            <option value="{{ $classroom->id }}" {{ old('classroom_id') == $classroom->id ? 'selected' : ''}}>
+                                {{ $classroom->name }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
         </div>
-        {{-- Table --}}
-        <div class="relative overflow-x-auto">
-            <table class="w-full text-sm text-left text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                    <tr>
-                        <th class="px-6 py-3">Name</th>
-                        <th class="px-6 py-3">NIY</th>
-                        <th class="px-6 py-3">Subject ID</th>
-                        <th class="px-6 py-3">Start Date</th>
+    </div>
+    {{-- Table --}}
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3">Name</th>
+                    <th class="px-6 py-3">NIY</th>
+                    <th class="px-6 py-3">Subject ID</th>
+                    <th class="px-6 py-3">Start Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($teachers as $index => $teacher)
+                    <tr class="bg-white border-b">
+                        <td class="px-6 py-4">{{ $teacher->name }}</td>
+                        <td class="px-6 py-4">{{ $teacher->niy }}</td>
+                        <td class="px-6 py-4">{{ $teacher->subject_id }}</td>
+                        <td class="px-6 py-4">{{ $teacher->start_date }}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($teachers as $index => $teacher)
-                        <tr class="bg-white border-b">
-                            <td class="px-6 py-4">{{ $teacher->name }}</td>
-                            <td class="px-6 py-4">{{ $teacher->niy }}</td>
-                            <td class="px-6 py-4">{{ $teacher->subject_id }}</td>
-                            <td class="px-6 py-4">{{ $teacher->start_date }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     </div>
 </x-admin.layout>
