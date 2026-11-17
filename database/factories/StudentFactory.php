@@ -6,7 +6,6 @@ use App\Models\ClassRoom;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-
 /**
  * @extends Factory<Student>
  */
@@ -21,10 +20,10 @@ class StudentFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'nis' => fake()->randomNumber(5, false),
-            //'ruang_kelas' => fake()->randomElement(['11 PPLG 1', '11 PPLG 2', '11 PPLG 3']),
+            'nis' => fake()->numberBetween(10000, 99999),
+            // 'ruang_kelas' => fake()->randomElement(['11 PPLG 1', '11 PPLG 2', '11 PPLG 3']),
             'classroom_id' => ClassRoom::factory(),
-            'status' => fake()->randomElement(['aktif','tidak aktif']),
+            'status' => fake()->randomElement(['aktif', 'tidak aktif']),
         ];
     }
 }

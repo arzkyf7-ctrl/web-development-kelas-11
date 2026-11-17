@@ -65,6 +65,7 @@
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
+                        <th class="px-6 py-3">No</th>
                         <th class="px-6 py-3">Name</th>
                         <th class="px-6 py-3">NIS</th>
                         <th class="px-6 py-3">Classroom ID</th>
@@ -72,12 +73,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($students as $index => $student)
+                    @foreach ($students as $siswa)
                         <tr class="bg-white border-b">
-                            <td class="px-6 py-4">{{ $student->name }}</td>
-                            <td class="px-6 py-4">{{ $student->nis }}</td>
-                            <td class="px-6 py-4">{{ $student->classroom_id }}</td>
-                            <td class="px-6 py-4">{{ $student->status }}</td>
+                            <td class="px-6 py-4">{{ $loop->iteration }}</td>
+                            <td class="px-6 py-4">{{ $siswa['name'] }}</td>
+                            <td class="px-6 py-4">{{ $siswa['nis'] }}</td>
+                            <td class="px-6 py-4">{{ $siswa->classroom_id }}</td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 text-xs font-medium text-green-800 bg-green-100 rounded-full">
+                                    {{ $siswa['status'] }}
+                                </span>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

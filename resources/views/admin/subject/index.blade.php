@@ -62,13 +62,19 @@
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
-                        <td class="px-6 py-3">Name</td>
+                        <th class="px-6 py-3">
+                            ID
+                        </th>
+                        <th class="px-6 py-3">
+                            Name
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($subjects as $index => $subject)
+                    @foreach ($subjects as $mapel)
                         <tr class="bg-white border-b">
-                            <td class="px-6 py-4">{{ $subject->name }}</td>
+                            <td class="px-6 py-4">{{ $mapel['id'] }}</td>
+                            <td class="px-6 py-4">{{ $mapel['name'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>

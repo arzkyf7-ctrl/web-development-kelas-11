@@ -63,6 +63,7 @@
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
+                    <th class="px-6 py-3">ID</th>
                     <th class="px-6 py-3">Name</th>
                     <th class="px-6 py-3">NIY</th>
                     <th class="px-6 py-3">Subject ID</th>
@@ -70,12 +71,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($teachers as $index => $teacher)
+                @foreach ($teachers as $guru)
                     <tr class="bg-white border-b">
-                        <td class="px-6 py-4">{{ $teacher->name }}</td>
-                        <td class="px-6 py-4">{{ $teacher->niy }}</td>
-                        <td class="px-6 py-4">{{ $teacher->subject_id }}</td>
-                        <td class="px-6 py-4">{{ $teacher->start_date }}</td>
+                        <td class="px-6 py-4">{{ $guru['id'] }}</td>
+                        <td class="px-6 py-4">{{ $guru['name'] }}</td>
+                        <td class="px-6 py-4">{{ $guru['niy'] }}</td>
+                        <td class="px-6 py-4">{{ $guru['subject_id'] }}</td>
+                        <td class="px-6 py-4">{{ $guru['start_date'] }}</td>
                     </tr>
                 @endforeach
             </tbody>

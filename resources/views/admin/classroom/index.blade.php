@@ -67,6 +67,9 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th class="px-6 py-3">
+                            ID
+                        </th>
+                        <th class="px-6 py-3">
                             Name
                         </th>
 
@@ -76,10 +79,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($classrooms as $index => $classroom)
+                    @foreach ($classrooms as $classroom)
                         <tr class="bg-white border-b">
-                            <td class="px-6 py-4">{{ $classroom->name }}</td>
-                            <td class="px-6 py-4">{{ $classroom->major }}</td>
+                            <td class="px-6 py-4">{{ $classroom['id'] }}</td>
+                            <td class="px-6 py-4">{{ $classroom['name'] }}</td>
+                            <td class="px-6 py-4">{{ $classroom['major'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>
