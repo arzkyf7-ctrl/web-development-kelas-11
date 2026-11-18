@@ -22,7 +22,7 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100'],
-            'nis' => ['required', 'integer', 'min:1', 'max:2147483647', 'unique:students,nis'],
+            'nis' => ['required', 'integer', 'digits:5', 'unique:students,nis'],
             'classroom_id' => ['required', 'exists:class_rooms,id'],
             'status' => ['required', 'in:aktif,tidak aktif'],
         ]);

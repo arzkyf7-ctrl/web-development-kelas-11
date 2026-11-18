@@ -6,9 +6,6 @@
                 <h1 class="text-2xl font-bold text-gray-900">
                     Subjects
                 </h1>
-                <p class="mt-1 text-sm text-gray-500">
-                    Subject Page
-                </p>
             </div>
             <div>
                 <button type="button" data-modal-target="create-subject-modal" data-modal-toggle="create-subject-modal"

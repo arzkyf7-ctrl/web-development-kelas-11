@@ -6,9 +6,6 @@
                 <h1 class="text-2xl font-bold text-gray-900">
                     Students
                 </h1>
-                <p class="mt-1 text-sm text-gray-500">
-                    Manage Student Data
-                </p>
             </div>
             <div>
                 <button type="button" data-modal-target="create-student-modal" data-modal-toggle="create-student-modal"
