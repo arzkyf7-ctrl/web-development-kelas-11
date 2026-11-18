@@ -16,9 +16,14 @@
                     + Add Student
                 </button>
             </div>
-            @include('admin.student.create')
         </div>
     </div>
+
+    @if ($errors->any())
+        <div role="alert" class="mb-4 rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-700">
+            Please correct the errors in the Add Student form.
+        </div>
+    @endif
 
     {{-- Main Card --}}
     <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -90,4 +95,5 @@
             </table>
         </div>
     </div>
+    @include('admin.student.create')
 </x-admin.layout>

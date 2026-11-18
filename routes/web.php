@@ -53,6 +53,15 @@ Route::prefix('admin')->group(function () {
     Route::delete('/classroom/{id}', [ClassroomController::class, 'destroy'])
         ->name('admin.classroom.destroy');
 
+    // subject
     Route::get('/subjects', [SubjectsController::class, 'index'])->name('admin.subjects.index');
+    Route::post('/subjects', [SubjectsController::class, 'store'])->name('admin.subjects.store');
+    Route::put('/subjects/{id}', [SubjectsController::class, 'update'])->name('admin.subjects.update');
+    Route::delete('/subjects{id}', [SubjectsController::class, 'destroy'])->name('admin.subjects.destroy');
+
+    // teachers
     Route::get('/teachers', [TeachersController::class, 'index'])->name('admin.teacher.index');
+    Route::post('/teachers', [TeachersController::class, 'store'])->name('admin.teacher.store');
+    Route::put('/teachers/{id}', [TeachersController::class, 'update'])->name('admin.teacher.update');
+    Route::delete('/teachers{id}', [TeachersController::class, 'destroy'])->name('admin.teacher.destroy');
 });

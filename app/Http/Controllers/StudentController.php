@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use APp\Models\ClassRoom;
+use App\Models\ClassRoom;
 use App\Models\Student;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class StudentController extends Controller
 {
-    public function index()
-
+    public function index(): View
     {
         $students = Student::all();
         $classrooms = ClassRoom::all();
@@ -17,22 +18,15 @@ class StudentController extends Controller
         return view('admin.student.index', compact('students', 'classrooms'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            // 'nis'=>'required|string|max:20|unique:students,nis',
-            // 'name'=>'required|string|max:255',
-            // 'classroom_id'=>'required|exists:classrooms,id',
-            // 'status'=>'required|in:aktif,tidak-aktif',
-        ], [
-            // 'nis.required'=>'NIS harus diisi',
-            // 'nis.unique'=>'NIS sudah digunakan',
-            // 'name.required'=>'Nama harus diisi',
-            // 'classroom_id.required'=>'Kelas harus dipilih',
-            // 'classroom_id.exists'=>'Kelas tidak valid',
-            // 'status.required'=>'Status harus dipilih',
-            // 'status.in'=>'Status tidak valid',
+            'name' => ['required', 'string', 'max:100'],
+            'nis' => ['required', 'integer', 'min:1', 'max:2147483647', 'unique:students,nis'],
+            'classroom_id' => ['required', 'exists:class_rooms,id'],
+            'status' => ['required', 'in:aktif,tidak aktif'],
         ]);
+
         Student::create($validated);
 
         return redirect()

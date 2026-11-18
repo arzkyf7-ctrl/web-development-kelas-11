@@ -22,37 +22,58 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="#" method="POST">
+            <form action="{{ route('admin.student.store') }}" method="POST">
+                @csrf
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
                         <label for="name"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="name" id="name"
+                        <input type="text" name="name" id="name" value="{{ old('name') }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Enter name" required="" />
+                        @error('name')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="nis"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIS</label>
-                        <input type="text" name="nis" id="nis"
+                        <input type="number" name="nis" id="nis" value="{{ old('nis') }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Enter NIS" required="" />
+                            placeholder="Enter NIS" min="1" required="" />
+                        @error('nis')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
-                        <label for="classroom-id"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Classroom ID</label>
-                        <input type="number" name="classroom-id" id="classroom-id"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Enter Classroom ID" required="" />
+                        <label for="classroom_id"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Classroom</label>
+                        <select name="classroom_id" id="classroom_id" required
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="">Select a classroom</option>
+                            @foreach ($classrooms as $classroom)
+                                <option value="{{ $classroom->id }}" {{ old('classroom_id') == $classroom->id ? 'selected' : '' }}>
+                                    {{ $classroom->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('classroom_id')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="status"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <select id="status" name="status"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option value="aktif">Aktif</option>
-                            <option value="tidak-aktif">Tidak Aktif</option>
+                            <option value="aktif" {{ old('status', 'aktif') === 'aktif' ? 'selected' : '' }}>Aktif
+                            </option>
+                            <option value="tidak aktif" {{ old('status') === 'tidak aktif' ? 'selected' : '' }}>Tidak
+                                Aktif</option>
                         </select>
+                        @error('status')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <button type="submit"

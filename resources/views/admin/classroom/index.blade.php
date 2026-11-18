@@ -17,9 +17,14 @@
                     + Add Classroom
                 </button>
             </div>
-            @include('admin.classroom.create')
         </div>
     </div>
+
+    @if ($errors->any())
+        <div role="alert" class="mb-4 rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-700">
+            Please correct the errors in the Add Classroom form.
+        </div>
+    @endif
 
     {{-- Main Card --}}
     <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -67,7 +72,7 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th class="px-6 py-3">
-                            ID
+                            No
                         </th>
                         <th class="px-6 py-3">
                             Name
@@ -81,7 +86,7 @@
                 <tbody>
                     @foreach ($classrooms as $classroom)
                         <tr class="bg-white border-b">
-                            <td class="px-6 py-4">{{ $classroom['id'] }}</td>
+                            <td class="px-6 py-4">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4">{{ $classroom['name'] }}</td>
                             <td class="px-6 py-4">{{ $classroom['major'] }}</td>
                         </tr>
@@ -90,4 +95,5 @@
             </table>
         </div>
     </div>
+    @include('admin.classroom.create')
 </x-admin.layout>
