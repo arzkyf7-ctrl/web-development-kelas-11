@@ -22,14 +22,18 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="#" method="POST">
-                <div class="grid gap-4 mb-4 sm:grid-cols-2">
+            <form action="{{ route('admin.subjects.store') }}" method="POST">
+                @csrf
+                <div class="grid gap-4 mb-4 sm:grid-cols-1">
                     <div>
                         <label for="name"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="name" id="name"
+                        <input type="text" name="name" id="name" value="{{ old('name') }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Enter subject name" required="" />
+                        @error('name')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <button type="submit"
                         class="inline-flex items-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
@@ -41,6 +45,7 @@
                         </svg>
                         Add new
                     </button>
+                </div>
             </form>
         </div>
     </div>

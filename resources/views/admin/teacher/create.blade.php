@@ -22,36 +22,50 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="#" method="POST">
+            <form action="{{ route('admin.teacher.store') }}" method="POST">
+                @csrf
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
                         <label for="name"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="name" id="name"
+                        <input type="text" name="name" id="name" value="{{ old('name') }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Enter name" required="" />
+                        @error('name')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="niy"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIY</label>
-                        <input type="text" name="nis" id="nis"
+                        <input type="text" name="niy" id="niy" value="{{ old('niy') }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Enter NIY" required="" />
+                        @error('niy')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
-                        <label for="classroom-id"
+                        <label for="subject_id"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject ID</label>
-                        <input type="number" name="subject-id" id="subject-id"
+                        <input type="number" name="subject_id" id="subject_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Enter Subject ID" required="" />
+                        @error('subject_id')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
-                        <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start
+                        <label for="start_date"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start
                             Date
                         </label>
-                        <input type="text" name="name" id="name"
+                        <input type="date" name="start_date" id="start_date"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="YYYY-MM-DD" required="" />
+                        @error('start_date')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <button type="submit"

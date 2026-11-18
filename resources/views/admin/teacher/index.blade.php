@@ -13,9 +13,14 @@
                     + Add Teacher
                 </button>
             </div>
-            @include('admin.teacher.create')
         </div>
     </div>
+
+    @if ($errors->any())
+        <div role="alert" class="mb-4 rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-700">
+            Please correct the errors in the Add Teacher form.
+        </div>
+    @endif
 
     {{-- Main Card --}}
     <div class="bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -63,7 +68,7 @@
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
-                    <th class="px-6 py-3">ID</th>
+                    <th class="px-6 py-3">No</th>
                     <th class="px-6 py-3">Name</th>
                     <th class="px-6 py-3">NIY</th>
                     <th class="px-6 py-3">Subject ID</th>
@@ -73,7 +78,7 @@
             <tbody>
                 @foreach ($teachers as $guru)
                     <tr class="bg-white border-b">
-                        <td class="px-6 py-4">{{ $guru['id'] }}</td>
+                        <td class="px-6 py-4">{{ $loop->iteration }}</td>
                         <td class="px-6 py-4">{{ $guru['name'] }}</td>
                         <td class="px-6 py-4">{{ $guru['niy'] }}</td>
                         <td class="px-6 py-4">{{ $guru['subject_id'] }}</td>
@@ -84,4 +89,5 @@
         </table>
     </div>
     </div>
+    @include('admin.teacher.create')
 </x-admin.layout>
