@@ -17,6 +17,6 @@ class Subjects extends Model
 
     public function teacher()
     {
-        return $this->belongsTo(Teachers::class);
+        return $this->hasOne(Teachers::class, 'subject_id');
     }
 }

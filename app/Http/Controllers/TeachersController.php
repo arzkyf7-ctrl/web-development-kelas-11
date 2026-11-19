@@ -24,7 +24,7 @@ class TeachersController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'niy' => ['required', 'integer', 'digits:9', 'unique:teacher,niy'],
+            'niy' => ['required', 'integer', 'digits:9', 'unique:teachers,niy'],
             'subject_id' => ['required', 'exists:subjects,id'],
             'start_date' => ['required', 'string', 'max:20'],
         ]);
